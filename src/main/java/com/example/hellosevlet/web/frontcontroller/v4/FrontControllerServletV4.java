@@ -21,12 +21,6 @@ import java.util.Objects;
 public class FrontControllerServletV4 extends HttpServlet {
     private Map<String, ControllerV4> controllerMap = new HashMap<>();
 
-    public FrontControllerServletV4() {
-        controllerMap.put("/front-controller/v4/members/new-form",new MemberFormControllerV4());
-        controllerMap.put("/front-controller/v4/members/save",new MemberSaveControllerV4());
-        controllerMap.put("/front-controller/v4/members",new MemberListControllerV4());
-    }
-
     @Override
     protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
@@ -49,6 +43,12 @@ public class FrontControllerServletV4 extends HttpServlet {
         view.render(model,request,response);
 
 
+    }
+
+    public FrontControllerServletV4() {
+        controllerMap.put("/front-controller/v4/members/new-form",new MemberFormControllerV4());
+        controllerMap.put("/front-controller/v4/members/save",new MemberSaveControllerV4());
+        controllerMap.put("/front-controller/v4/members",new MemberListControllerV4());
     }
 
     private static MyView viewResolver(String viewName) {
